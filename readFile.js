@@ -2,15 +2,15 @@ const http = require('http')
 const fs = require('fs')
 
 // 尝试写入文件
-fs.writeFile('./www/a.txt', '来了弟弟', (err) => {
+fs.writeFile('./file/a.txt', '来了老弟', (err) => {
     if (err) {
         console.log('写入文件出错')
     }
 })
 
-// 尝试在
+// 尝试访问 http://localhost:8080/1.html 或 index.html，服务器返回不同的data
 const server = http.createServer((req, res) => {
-    const readUrl = `./www${req.url}`
+    const readUrl = `./file${req.url}`
     fs.readFile(readUrl, (err, data) => {
         if (err) {
             res.write('file not found')
